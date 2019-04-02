@@ -1,0 +1,16 @@
+---
+# Open script in vim
+# Enable autosave (>vim 7.4)
+:autocmd TextChanged,TextChangedI <buffer> silent write
+---
+# In separate terminal keep updating PNG file in paralel
+while true; do sleep 2 && date && gnuplot -c test.gp 12k-atlas12  --persists; done
+---
+# Plot in realtime with reasonable image viewer
+# Feh is working but flickering for some reason - not refreshing window but reopening it:
+feh -. -p -R 1 file.png # Refresh=1 "-." means fir to screen
+# Ristretto is working well when all the shitbars are disabled
+ristretto file.png &
+
+# TODO
+tmux compilation error bell + message
